@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/nav.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <h1>TASK MANAGER</h1>
+      <% if (typeof message !== 'undefined') { %>
+      <div class="flash-message"><%= message %></div>
+      <% } %>
+
+      <form method="post" action="/submit">
+        <div class="form-group">
+          <label for="inputField">Enter Task:</label>
+          <input
+            type="text"
+            id="inputField"
+            name="inputField"
+            placeholder="Eg: Studying..."
+          />
+        </div>
+        <button type="submit" id="taskbtn">Submit</button>
+      </form>
+      <br />
+      <% if (lists) { %>
+        <ul>
+          <% lists.forEach((list) => { %>
+          <li style="padding: 10px 15px; margin: 4px 0; font-size: 18px; font-weight: 700; color: black; max-width: 400px; width: 100%;">
+            <%= list.inputField %>
+          </li>
+          <% }); %>
+        </ul>
+        
+
+      <% } %>
+    </div>
+  </body>
+</html>
